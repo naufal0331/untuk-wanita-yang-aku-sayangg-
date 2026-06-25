@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide Kenangan & Pesan</title>
+    <style>
+        body { margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; background: #fff5f7; display: flex; justify-content: center; align-items: center; height: 100vh; overflow: hidden; }
+        .carousel { position: relative; width: 80%; max-width: 600px; height: 500px; overflow: hidden; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .slide { position: absolute; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; opacity: 0; transition: opacity 1s ease-in-out; box-sizing: border-box; }
+        .slide.active { opacity: 1; }
+        h2 { color: #d63384; margin-bottom: 10px; }
+        p { color: #555; font-size: 1rem; line-height: 1.4; margin-bottom: 15px; }
+        .slide img { width: 80%; height: 250px; object-fit: cover; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); margin-bottom: 15px; }
+        
+        /* Navigasi di tengah dengan animasi */
+        .nav { position: absolute; bottom: 30px; width: 100%; display: flex; justify-content: center; gap: 20px; }
+        button { cursor: pointer; padding: 12px 25px; background: #d63384; border: none; color: white; border-radius: 25px; font-weight: bold; transition: transform 0.3s ease, background 0.3s; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        button:hover { background: #b02a6c; transform: scale(1.1); }
+        button:active { transform: scale(0.95); }
+        
+        /* Animasi detak */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        .animate-pulse { animation: pulse 2s infinite; }
+    </style>
+</head>
+<body>
+
+<div class="carousel" id="carousel">
+    <div class="slide active">
+        <h2>Moment yang kita inginkan</h2>
+        <img src="foto1.jpeg" alt="Foto 1">
+        <p>Aku sangat bersyukur bisa bertemu dengan wanita sepertimu. Kehadiranmu membawa warna baru di hidupku.</p>
+    </div>
+    <div class="slide">
+        <h2>Princesss akuuu</h2>
+        <img src="foto2.jpeg" alt="Foto 2">
+        <p>Bersyukur banget Tuhan mempertemukan aku dengan wanita sehebat dan sebaik kamu.</p>
+    </div>
+    <div class="slide">
+        <h2>Kesayangan akuuu</h2>
+        <img src="foto3.jpeg" alt="Foto 3">
+        <p>Bertemu denganmu adalah anugerah terbesar. Kamu jawaban dari doa-doaku.</p>
+    </div>
+    <div class="slide">
+        <h2>My loveee</h2>
+        <img src="foto4.jpeg" alt="Foto 4">
+        <p>Terima kasih sudah menjadi bagian terindah dalam hidupku. Aku sangat menghargaimu.</p>
+    </div>
+</div>
+
+<div class="nav">
+    <button onclick="prevSlide()" class="animate-pulse">Sebelumnya</button>
+    <button onclick="nextSlide()" class="animate-pulse">Selanjutnya</button>
+</div>
+
+<script>
+    let current = 0;
+    const slides = document.querySelectorAll('.slide');
+    function showSlide(index) { slides.forEach((s, i) => s.classList.toggle('active', i === index)); }
+    function nextSlide() { current = (current + 1) % slides.length; showSlide(current); }
+    function prevSlide() { current = (current - 1 + slides.length) % slides.length; showSlide(current); }
+</script>
+
+</body>
+</html>
